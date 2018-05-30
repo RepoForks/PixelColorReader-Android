@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1, btn2, btn3;
+    Button btn1, btn2, btn3;//start, stop, snap
     ScreenColorPicker screenColorPicker;
 
     @Override
@@ -47,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Bitmap b = screenColorPicker.getLatestBitmap();
-                        Log.e("sixe", b.getHeight()+","+b.getWidth());
+						//below code saves a screensnap after a delay of 5 seconds. Make sure you provided storage permission through Settings.
+                        Bitmap b = screenColorPicker.getLatestBitmap();//gets latest bitmap
+                        Log.d("size", b.getHeight()+","+b.getWidth());//logs screen size
                         FileOutputStream out = null;
                         try {
                             out = new FileOutputStream(Environment.getExternalStorageDirectory()+"/erererere.png");
@@ -66,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-                }, 2000);
+                }, 5000);
             }
         });
 
-        screenColorPicker = new ScreenColorPicker(this, 1080, 1920);
+        screenColorPicker = new ScreenColorPicker(this, 1080, 1920);//my device specs are these, you can pass whatever int you want
         screenColorPicker.initialise();
     }
 
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPermissionDenied() {
+				//finishes the activity on denial
                 finish();
             }
         },requestCode, resultCode, data);

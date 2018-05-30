@@ -25,7 +25,7 @@ In your root build.gradle file. Add `maven {url 'https://jitpack.io' }` in allpr
 **Step 2.**
 Clone the library. To do this add the following dependency
 
-    implementation 'com.github.hdsrivastava:PixelColorReader-Android:0.1-stable'
+    implementation 'com.github.hdsrivastava:PixelColorReader-Android:0.2-stable'
 
 After doing these changes, hit **sync now**, to build the library
 
